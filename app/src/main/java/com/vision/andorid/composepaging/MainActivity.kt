@@ -64,68 +64,9 @@ fun Paging(viewModel: BeerViewModel) {
         swipeRefreshState.isRefreshing = true
     }) {
         LazyColumn {
-
-            if (pagingData.loadState.refresh is LoadState.Loading) {
-                item {
-                    Box(modifier = Modifier.fillParentMaxSize()) {
-                        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                    }
-                }
-            }
-            if (pagingData.loadState.refresh is LoadState.NotLoading) {
-                swipeRefreshState.isRefreshing = false
-                items(pagingData) {
-                    it?.let {
-                        ListItem(beer = it)
-                    }
-                }
-            }
-            if (pagingData.loadState.refresh is LoadState.Error) {
-                item {
-                    Box(modifier = Modifier.fillParentMaxSize()) {
-                        Text(text = "Error Occurred", modifier = Modifier.clickable {
-                            pagingData.refresh()
-                        })
-                    }
-                }
-            }
-
-
-            if (pagingData.loadState.append is LoadState.Loading) {
-                item {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(12.dp)
-                    ) {
-                        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                    }
-                }
-            }
-            if (pagingData.loadState.append is LoadState.Error) {
-                item {
-                    ErrorFooter {
-                        pagingData.retry()
-                    }
-                }
-            }
-
-            if (pagingData.loadState.prepend is LoadState.Loading) {
-                item {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(12.dp)
-                    ) {
-                        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                    }
-                }
-            }
-            if (pagingData.loadState.prepend is LoadState.Error) {
-                item {
-                    ErrorHeader {
-                        pagingData.retry()
-                    }
+            items(pagingData) {
+                it?.let {
+                    ListItem(beer = it)
                 }
             }
         }
