@@ -1,6 +1,7 @@
 package com.vision.andorid.composepaging.network
 
 import com.vision.andorid.composepaging.model.BeerDTO
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -13,5 +14,11 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
     ): List<BeerDTO>
+
+    @GET("beers")
+    suspend fun getBeerListMediator(
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
+    ): Response<List<BeerDTO>>
 
 }

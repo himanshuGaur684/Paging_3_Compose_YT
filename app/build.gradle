@@ -83,4 +83,15 @@ dependencies {
 
     // Swipe refresh
     implementation 'com.google.accompanist:accompanist-swiperefresh:0.24.13-rc'
+
+    // room database
+    def room_version = "2.4.3"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+//    kapt "androidx.room:room-compiler:$room_version"
+//    implementation "androidx.room:room-ktx:$room_version"
+
+    // Room for Paging 3 Integration
+    implementation "androidx.room:room-paging:$room_version"
 }

@@ -90,7 +90,6 @@ fun Paging(viewModel: BeerViewModel) {
                 }
             }
 
-
             if (pagingData.loadState.append is LoadState.Loading) {
                 item {
                     Box(
@@ -128,10 +127,9 @@ fun Paging(viewModel: BeerViewModel) {
                     }
                 }
             }
+
         }
     }
-
-
 }
 
 @Composable
